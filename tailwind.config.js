@@ -89,13 +89,13 @@ export default {
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' }
+to: { height: 'var(--radix-accordion-content-height)' }
         },
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' }
         },
-'power-pulse': {
+        'power-pulse': {
           '0%, 100%': { 
             boxShadow: '0 0 20px rgba(255, 215, 0, 0.3)',
             transform: 'scale(1)'
@@ -106,7 +106,7 @@ export default {
           }
         },
         'saiyan-glow': {
-          '0%, 100%': { 
+          '0%, 100%': {
             boxShadow: '0 0 30px rgba(255, 107, 53, 0.4)'
           },
           '50%': {
@@ -148,10 +148,10 @@ export default {
             transform: 'scale(1.1) rotate(180deg)'
           },
           '100%': { 
-            boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)',
+boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)',
             transform: 'scale(1) rotate(360deg)'
           }
-},
+        },
         'exercise-demo-pushup': {
           '0%': { transform: 'translateY(0px) rotate(0deg)' },
           '25%': { transform: 'translateY(-10px) rotate(-2deg)' },
