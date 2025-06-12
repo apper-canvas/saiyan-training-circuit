@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import tailwindcssAnimate from "tailwindcss-animate";
+
 export default {
   darkMode: ["class"],
   content: [
@@ -79,12 +81,13 @@ export default {
         'power': '0 0 30px rgba(255, 215, 0, 0.4), 0 0 60px rgba(255, 215, 0, 0.2)',
         'saiyan': '0 0 50px rgba(255, 107, 53, 0.5), inset 0 0 50px rgba(255, 215, 0, 0.1)'
       },
-      borderRadius: {
+borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
-sm: 'calc(var(--radius) - 4px)',
-      'xl': '0.75rem',
-      '2xl': '1rem'
+        sm: 'calc(var(--radius) - 4px)',
+        'xl': '0.75rem',
+        '2xl': '1rem'
+      }
     },
     keyframes: {
       'accordion-down': {
@@ -195,8 +198,8 @@ sm: 'calc(var(--radius) - 4px)',
         'exercise-demo-situp': 'exercise-demo-situp 2.5s ease-in-out infinite',
         'exercise-demo-crunch': 'exercise-demo-crunch 1.8s ease-in-out infinite',
         'exercise-demo-run': 'exercise-demo-run 1.5s ease-in-out infinite',
-        'mistake-warning': 'mistake-warning 0.5s ease-in-out infinite'
+'mistake-warning': 'mistake-warning 0.5s ease-in-out infinite'
       }
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 }
