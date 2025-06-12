@@ -196,9 +196,9 @@ borderRadius: {
         'power-surge': 'power-surge 1.5s ease-in-out',
         'exercise-demo-pushup': 'exercise-demo-pushup 2s ease-in-out infinite',
         'exercise-demo-situp': 'exercise-demo-situp 2.5s ease-in-out infinite',
-        'exercise-demo-crunch': 'exercise-demo-crunch 1.8s ease-in-out infinite',
+'exercise-demo-crunch': 'exercise-demo-crunch 1.8s ease-in-out infinite',
         'exercise-demo-run': 'exercise-demo-run 1.5s ease-in-out infinite',
-'mistake-warning': 'mistake-warning 0.5s ease-in-out infinite'
+        'mistake-warning': 'mistake-warning 0.5s ease-in-out infinite'
       }
   },
   plugins: [tailwindcssAnimate],

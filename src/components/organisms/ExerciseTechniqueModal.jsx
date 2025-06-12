@@ -301,12 +301,12 @@ function ExerciseTechniqueModal({ exerciseKey, isOpen, onClose }) {
                                 </motion.div>
                               ))}
                             </div>
-                          </div>
+</div>
                         </motion.div>
                       )}
                     </AnimatePresence>
                   </div>
-                </div>
+                </Tabs>
               </div>
 
               {/* Footer */}
