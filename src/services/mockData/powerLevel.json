@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "rank": "Human",
+    "minWeek": 1,
+    "powerValue": 100,
+    "nextRank": "Martial Artist"
+  },
+  {
+    "id": 2,
+    "rank": "Martial Artist",
+    "minWeek": 2,
+    "powerValue": 500,
+    "nextRank": "Z Fighter"
+  },
+  {
+    "id": 3,
+    "rank": "Z Fighter",
+    "minWeek": 4,
+    "powerValue": 1000,
+    "nextRank": "Elite Warrior"
+  },
+  {
+    "id": 4,
+    "rank": "Elite Warrior",
+    "minWeek": 6,
+    "powerValue": 5000,
+    "nextRank": "Saiyan"
+  },
+  {
+    "id": 5,
+    "rank": "Saiyan",
+    "minWeek": 8,
+    "powerValue": 10000,
+    "nextRank": "Super Saiyan"
+  },
+  {
+    "id": 6,
+    "rank": "Super Saiyan",
+    "minWeek": 12,
+    "powerValue": 50000,
+    "nextRank": "Super Saiyan 2"
+  },
+  {
+    "id": 7,
+    "rank": "Super Saiyan 2",
+    "minWeek": 16,
+    "powerValue": 100000,
+    "nextRank": "Super Saiyan 3"
+  },
+  {
+    "id": 8,
+    "rank": "Super Saiyan 3",
+    "minWeek": 20,
+    "powerValue": 400000,
+    "nextRank": "Super Saiyan God"
+  },
+  {
+    "id": 9,
+    "rank": "Super Saiyan God",
+    "minWeek": 25,
+    "powerValue": 1000000,
+    "nextRank": "Super Saiyan Blue"
+  },
+  {
+    "id": 10,
+    "rank": "Super Saiyan Blue",
+    "minWeek": 30,
+    "powerValue": 5000000,
+    "nextRank": "Ultra Instinct"
+  },
+  {
+    "id": 11,
+    "rank": "Ultra Instinct",
+    "minWeek": 40,
+    "powerValue": 50000000,
+    "nextRank": null
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "date": "2024-01-01",
+    "pushUps": { "target": 10, "completed": true },
+    "sitUps": { "target": 10, "completed": true },
+    "crunches": { "target": 10, "completed": true },
+    "run": { "target": 1, "completed": true },
+    "isComplete": true
+  },
+  {
+    "id": 2,
+    "date": "2024-01-02",
+    "pushUps": { "target": 10, "completed": true },
+    "sitUps": { "target": 10, "completed": false },
+    "crunches": { "target": 10, "completed": true },
+    "run": { "target": 1, "completed": true },
+    "isComplete": false
+  },
+  {
+    "id": 3,
+    "date": "2024-01-03",
+    "pushUps": { "target": 10, "completed": true },
+    "sitUps": { "target": 10, "completed": true },
+    "crunches": { "target": 10, "completed": true },
+    "run": { "target": 1, "completed": false },
+    "isComplete": false
+  },
+  {
+    "id": 4,
+    "date": "2024-01-04",
+    "pushUps": { "target": 10, "completed": false },
+    "sitUps": { "target": 10, "completed": false },
+    "crunches": { "target": 10, "completed": false },
+    "run": { "target": 1, "completed": false },
+    "isComplete": false
+  },
+  {
+    "id": 5,
+    "date": "2024-01-05",
+    "pushUps": { "target": 10, "completed": true },
+    "sitUps": { "target": 10, "completed": true },
+    "crunches": { "target": 10, "completed": true },
+    "run": { "target": 1, "completed": true },
+    "isComplete": true
+  }
+]
