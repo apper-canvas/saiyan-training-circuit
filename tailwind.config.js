@@ -95,12 +95,12 @@ export default {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' }
         },
-        'power-pulse': {
+'power-pulse': {
           '0%, 100%': { 
             boxShadow: '0 0 20px rgba(255, 215, 0, 0.3)',
             transform: 'scale(1)'
           },
-'50%': { 
+          '50%': { 
             boxShadow: '0 0 40px rgba(255, 215, 0, 0.6)',
             transform: 'scale(1.02)'
           }
@@ -151,6 +151,35 @@ export default {
             boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)',
             transform: 'scale(1) rotate(360deg)'
           }
+},
+        'exercise-demo-pushup': {
+          '0%': { transform: 'translateY(0px) rotate(0deg)' },
+          '25%': { transform: 'translateY(-10px) rotate(-2deg)' },
+          '50%': { transform: 'translateY(-20px) rotate(0deg)' },
+          '75%': { transform: 'translateY(-10px) rotate(2deg)' },
+          '100%': { transform: 'translateY(0px) rotate(0deg)' }
+        },
+        'exercise-demo-situp': {
+          '0%': { transform: 'rotate(0deg) translateY(0px)' },
+          '50%': { transform: 'rotate(45deg) translateY(-5px)' },
+          '100%': { transform: 'rotate(0deg) translateY(0px)' }
+        },
+        'exercise-demo-crunch': {
+          '0%': { transform: 'scaleY(1) translateY(0px)' },
+          '50%': { transform: 'scaleY(0.8) translateY(-3px)' },
+          '100%': { transform: 'scaleY(1) translateY(0px)' }
+        },
+        'exercise-demo-run': {
+          '0%': { transform: 'translateX(-5px) scaleX(1)' },
+          '25%': { transform: 'translateX(0px) scaleX(1.05)' },
+          '50%': { transform: 'translateX(5px) scaleX(1)' },
+          '75%': { transform: 'translateX(0px) scaleX(0.95)' },
+          '100%': { transform: 'translateX(-5px) scaleX(1)' }
+        },
+        'mistake-warning': {
+          '0%, 100%': { transform: 'rotate(0deg)', backgroundColor: 'rgba(239, 68, 68, 0.1)' },
+          '25%': { transform: 'rotate(1deg)', backgroundColor: 'rgba(239, 68, 68, 0.2)' },
+          '75%': { transform: 'rotate(-1deg)', backgroundColor: 'rgba(239, 68, 68, 0.2)' }
         }
       },
       animation: {
@@ -161,8 +190,12 @@ export default {
         'confetti-fall': 'confetti-fall 3s linear infinite',
         'achievement-glow': 'achievement-glow 2s ease-in-out infinite',
         'badge-bounce': 'badge-bounce 1s ease-in-out',
-        'power-surge': 'power-surge 1.5s ease-in-out'
-      }
+        'power-surge': 'power-surge 1.5s ease-in-out',
+        'exercise-demo-pushup': 'exercise-demo-pushup 2s ease-in-out infinite',
+        'exercise-demo-situp': 'exercise-demo-situp 2.5s ease-in-out infinite',
+        'exercise-demo-crunch': 'exercise-demo-crunch 1.8s ease-in-out infinite',
+        'exercise-demo-run': 'exercise-demo-run 1.5s ease-in-out infinite',
+        'mistake-warning': 'mistake-warning 0.5s ease-in-out infinite'
     }
   },
   plugins: [require("tailwindcss-animate")],

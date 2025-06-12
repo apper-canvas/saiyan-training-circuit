@@ -1,0 +1,202 @@
+[
+  {
+    "exerciseKey": "pushUps",
+    "name": "Push-ups",
+    "category": "upper_body",
+    "description": "A fundamental bodyweight exercise targeting chest, shoulders, and triceps",
+    "difficulty": "beginner",
+    "musclesTargeted": ["chest", "shoulders", "triceps", "core"],
+    "properForm": [
+      "Start in a plank position with hands slightly wider than shoulders",
+      "Keep your body in a straight line from head to heels",
+      "Lower your chest to the ground while keeping elbows at 45-degree angles",
+      "Push back up to starting position with controlled movement",
+      "Maintain core engagement throughout the movement",
+      "Breathe in on the way down, breathe out on the way up"
+    ],
+    "commonMistakes": [
+      {
+        "issue": "Sagging hips",
+        "correction": "Engage your core and maintain a straight line from head to heels",
+        "severity": "high"
+      },
+      {
+        "issue": "Flared elbows",
+        "correction": "Keep elbows at 45-degree angles to protect shoulders",
+        "severity": "medium"
+      },
+      {
+        "issue": "Partial range of motion",
+        "correction": "Lower chest all the way to the ground for maximum benefit",
+        "severity": "medium"
+      },
+      {
+        "issue": "Head position",
+        "correction": "Keep neck neutral, don't crane your head up or down",
+        "severity": "low"
+      }
+    ],
+    "progressions": [
+      "Wall push-ups for beginners",
+      "Knee push-ups for intermediate",
+      "Standard push-ups for advanced",
+      "Diamond push-ups for expert"
+    ],
+    "tips": [
+      "Start with wall or knee push-ups if standard is too difficult",
+      "Focus on quality over quantity",
+      "Gradually increase repetitions as you get stronger",
+      "Rest 48-72 hours between training sessions"
+    ]
+  },
+  {
+    "exerciseKey": "sitUps",
+    "name": "Sit-ups",
+    "category": "core",
+    "description": "Classic abdominal exercise that targets the entire core musculature",
+    "difficulty": "beginner",
+    "musclesTargeted": ["abs", "hip_flexors", "obliques"],
+    "properForm": [
+      "Lie on your back with knees bent and feet flat on the floor",
+      "Cross arms over chest or place hands lightly behind head",
+      "Engage core and lift your torso up towards your knees",
+      "Keep chin tucked and avoid pulling on your neck",
+      "Lower back down with control to starting position",
+      "Maintain steady breathing throughout the movement"
+    ],
+    "commonMistakes": [
+      {
+        "issue": "Pulling on neck",
+        "correction": "Keep hands lightly behind head or crossed over chest",
+        "severity": "high"
+      },
+      {
+        "issue": "Using momentum",
+        "correction": "Move slowly and control both up and down phases",
+        "severity": "medium"
+      },
+      {
+        "issue": "Incomplete range of motion",
+        "correction": "Lift shoulder blades completely off the ground",
+        "severity": "medium"
+      },
+      {
+        "issue": "Holding breath",
+        "correction": "Exhale on the way up, inhale on the way down",
+        "severity": "low"
+      }
+    ],
+    "progressions": [
+      "Crunches for beginners",
+      "Standard sit-ups for intermediate",
+      "Weighted sit-ups for advanced",
+      "V-ups for expert"
+    ],
+    "tips": [
+      "Anchor your feet under something stable if needed",
+      "Focus on using your abs, not your hip flexors",
+      "Start with smaller range of motion if full sit-ups are difficult",
+      "Progress gradually to avoid lower back strain"
+    ]
+  },
+  {
+    "exerciseKey": "crunches",
+    "name": "Crunches",
+    "category": "core",
+    "description": "Targeted abdominal exercise focusing on the upper abs",
+    "difficulty": "beginner",
+    "musclesTargeted": ["upper_abs", "core"],
+    "properForm": [
+      "Lie on your back with knees bent and feet flat on the floor",
+      "Place hands lightly behind your head or crossed over chest",
+      "Engage your core and lift your shoulder blades off the ground",
+      "Focus on bringing your ribcage towards your pelvis",
+      "Hold briefly at the top, then lower slowly",
+      "Keep lower back pressed to the floor throughout"
+    ],
+    "commonMistakes": [
+      {
+        "issue": "Yanking on neck",
+        "correction": "Use core muscles to lift, hands are just for support",
+        "severity": "high"
+      },
+      {
+        "issue": "Lifting too high",
+        "correction": "Only lift shoulder blades off ground, not full torso",
+        "severity": "medium"
+      },
+      {
+        "issue": "Fast, jerky movements",
+        "correction": "Move slowly and control the movement",
+        "severity": "medium"
+      },
+      {
+        "issue": "Arching lower back",
+        "correction": "Keep lower back pressed to the floor",
+        "severity": "low"
+      }
+    ],
+    "progressions": [
+      "Dead bug for beginners",
+      "Standard crunches for intermediate",
+      "Bicycle crunches for advanced",
+      "Reverse crunches for expert"
+    ],
+    "tips": [
+      "Think about pulling your belly button to your spine",
+      "Exhale forcefully at the top of the movement",
+      "Quality is more important than quantity",
+      "Feel the burn in your abs, not your neck"
+    ]
+  },
+  {
+    "exerciseKey": "run",
+    "name": "Running",
+    "category": "cardio",
+    "description": "Fundamental cardiovascular exercise for endurance and overall fitness",
+    "difficulty": "beginner",
+    "musclesTargeted": ["legs", "glutes", "core", "cardiovascular"],
+    "properForm": [
+      "Maintain upright posture with slight forward lean",
+      "Land on the middle of your foot, not heel or toe",
+      "Keep arms relaxed with 90-degree bend at elbows",
+      "Swing arms forward and back, not across your body",
+      "Take shorter, quicker steps rather than overstriding",
+      "Breathe rhythmically through nose and mouth"
+    ],
+    "commonMistakes": [
+      {
+        "issue": "Overstriding",
+        "correction": "Take shorter steps, land with feet under your center of gravity",
+        "severity": "high"
+      },
+      {
+        "issue": "Heel striking",
+        "correction": "Land on midfoot to reduce impact and improve efficiency",
+        "severity": "medium"
+      },
+      {
+        "issue": "Tension in shoulders",
+        "correction": "Keep shoulders relaxed and arms loose",
+        "severity": "medium"
+      },
+      {
+        "issue": "Improper breathing",
+        "correction": "Develop a breathing rhythm that matches your pace",
+        "severity": "low"
+      }
+    ],
+    "progressions": [
+      "Walking for beginners",
+      "Walk-run intervals for intermediate",
+      "Continuous running for advanced",
+      "Speed work and hills for expert"
+    ],
+    "tips": [
+      "Start with a pace where you can hold a conversation",
+      "Gradually increase distance by 10% each week",
+      "Focus on time rather than speed when starting",
+      "Listen to your body and rest when needed"
+    ]
+  }
+]
