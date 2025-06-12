@@ -82,14 +82,14 @@ export default {
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-        'xl': '0.75rem',
-        '2xl': '1rem'
-      },
-      keyframes: {
-        'accordion-down': {
-          from: { height: '0' },
-to: { height: 'var(--radix-accordion-content-height)' }
+sm: 'calc(var(--radius) - 4px)',
+      'xl': '0.75rem',
+      '2xl': '1rem'
+    },
+    keyframes: {
+      'accordion-down': {
+        from: { height: '0' },
+        to: { height: 'var(--radix-accordion-content-height)' }
         },
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
@@ -148,7 +148,7 @@ to: { height: 'var(--radix-accordion-content-height)' }
             transform: 'scale(1.1) rotate(180deg)'
           },
           '100%': { 
-boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)',
+            boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)',
             transform: 'scale(1) rotate(360deg)'
           }
         },
@@ -196,7 +196,7 @@ boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)',
         'exercise-demo-crunch': 'exercise-demo-crunch 1.8s ease-in-out infinite',
         'exercise-demo-run': 'exercise-demo-run 1.5s ease-in-out infinite',
         'mistake-warning': 'mistake-warning 0.5s ease-in-out infinite'
-    }
+      }
   },
   plugins: [require("tailwindcss-animate")],
 }
