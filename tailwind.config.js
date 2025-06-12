@@ -79,9 +79,9 @@ export default {
         'neu-light': '5px 5px 15px #d1d9e6, -5px -5px 15px #ffffff',
         'neu-dark': '5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.05)',
         'power': '0 0 30px rgba(255, 215, 0, 0.4), 0 0 60px rgba(255, 215, 0, 0.2)',
-        'saiyan': '0 0 50px rgba(255, 107, 53, 0.5), inset 0 0 50px rgba(255, 215, 0, 0.1)'
+'saiyan': '0 0 50px rgba(255, 107, 53, 0.5), inset 0 0 50px rgba(255, 215, 0, 0.1)'
       },
-borderRadius: {
+      borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
@@ -179,10 +179,29 @@ borderRadius: {
           '75%': { transform: 'translateX(0px) scaleX(0.95)' },
           '100%': { transform: 'translateX(-5px) scaleX(1)' }
         },
-        'mistake-warning': {
+'mistake-warning': {
           '0%, 100%': { transform: 'rotate(0deg)', backgroundColor: 'rgba(239, 68, 68, 0.1)' },
-          '25%': { transform: 'rotate(1deg)', backgroundColor: 'rgba(239, 68, 68, 0.2)' },
           '75%': { transform: 'rotate(-1deg)', backgroundColor: 'rgba(239, 68, 68, 0.2)' }
+        },
+        'timer-pulse': {
+          '0%, 100%': { 
+            boxShadow: '0 0 20px rgba(255, 215, 0, 0.3)',
+            transform: 'scale(1)'
+          },
+          '50%': { 
+            boxShadow: '0 0 40px rgba(255, 215, 0, 0.6)',
+            transform: 'scale(1.05)'
+          }
+        },
+        'timer-warning': {
+          '0%, 100%': { 
+            boxShadow: '0 0 15px rgba(239, 68, 68, 0.4)',
+            backgroundColor: 'rgba(239, 68, 68, 0.1)'
+          },
+          '50%': { 
+            boxShadow: '0 0 30px rgba(239, 68, 68, 0.8)',
+            backgroundColor: 'rgba(239, 68, 68, 0.2)'
+          }
         }
       },
       animation: {
@@ -194,12 +213,15 @@ borderRadius: {
         'achievement-glow': 'achievement-glow 2s ease-in-out infinite',
         'badge-bounce': 'badge-bounce 1s ease-in-out',
         'power-surge': 'power-surge 1.5s ease-in-out',
-        'exercise-demo-pushup': 'exercise-demo-pushup 2s ease-in-out infinite',
+'exercise-demo-pushup': 'exercise-demo-pushup 2s ease-in-out infinite',
         'exercise-demo-situp': 'exercise-demo-situp 2.5s ease-in-out infinite',
-'exercise-demo-crunch': 'exercise-demo-crunch 1.8s ease-in-out infinite',
+        'exercise-demo-crunch': 'exercise-demo-crunch 1.8s ease-in-out infinite',
         'exercise-demo-run': 'exercise-demo-run 1.5s ease-in-out infinite',
-        'mistake-warning': 'mistake-warning 0.5s ease-in-out infinite'
+        'mistake-warning': 'mistake-warning 0.5s ease-in-out infinite',
+        'timer-pulse': 'timer-pulse 2s ease-in-out infinite',
+        'timer-warning': 'timer-warning 1s ease-in-out infinite'
       }
+    }
   },
   plugins: [tailwindcssAnimate],
 }
