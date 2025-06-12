@@ -100,16 +100,16 @@ export default {
             boxShadow: '0 0 20px rgba(255, 215, 0, 0.3)',
             transform: 'scale(1)'
           },
-          '50%': { 
+'50%': { 
             boxShadow: '0 0 40px rgba(255, 215, 0, 0.6)',
             transform: 'scale(1.02)'
           }
         },
-'saiyan-glow': {
+        'saiyan-glow': {
           '0%, 100%': { 
             boxShadow: '0 0 30px rgba(255, 107, 53, 0.4)'
           },
-          '50%': { 
+          '50%': {
             boxShadow: '0 0 60px rgba(255, 107, 53, 0.8)'
           }
         },
@@ -162,6 +162,7 @@ export default {
         'achievement-glow': 'achievement-glow 2s ease-in-out infinite',
         'badge-bounce': 'badge-bounce 1s ease-in-out',
         'power-surge': 'power-surge 1.5s ease-in-out'
+      }
     }
   },
   plugins: [require("tailwindcss-animate")],
