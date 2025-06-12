@@ -54,9 +54,9 @@
     --ring: 0 0% 83.1%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
+--chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 
@@ -84,5 +84,38 @@
 
   .power-aura {
     animation: saiyan-glow 1.5s ease-in-out infinite;
+  }
+
+  .achievement-toast {
+    background: linear-gradient(135deg, #FF6B35 0%, #FFD700 50%, #FF6B35 100%) !important;
+    border: 2px solid #FFD700 !important;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5) !important;
+    animation: achievement-glow 2s ease-in-out infinite;
+  }
+
+  .confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #FFD700;
+    animation: confetti-fall 3s linear infinite;
+  }
+
+  .confetti-piece:nth-child(2n) {
+    background: #FF6B35;
+    animation-delay: 0.5s;
+  }
+
+  .confetti-piece:nth-child(3n) {
+    background: #4ECDC4;
+    animation-delay: 1s;
+  }
+
+  .achievement-badge {
+    animation: badge-bounce 1s ease-in-out;
+  }
+
+  .power-surge-effect {
+    animation: power-surge 1.5s ease-in-out;
   }
 }

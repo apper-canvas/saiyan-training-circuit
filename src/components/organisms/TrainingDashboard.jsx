@@ -7,13 +7,14 @@ import PowerLevelDisplay from '@/components/molecules/PowerLevelDisplay';
 import TrainingExerciseCard from '@/components/molecules/TrainingExerciseCard';
 import WeeklyProgressTracker from '@/components/molecules/WeeklyProgressTracker';
 
-import { userService, dailyWorkoutService, powerLevelService } from '@/services';
+import { userService, dailyWorkoutService, powerLevelService, achievementService } from '@/services';
 
 function TrainingDashboard() {
   const [user, setUser] = useState({});
   const [todayWorkout, setTodayWorkout] = useState({});
   const [weekWorkouts, setWeekWorkouts] = useState([]);
-  const [powerLevels, setPowerLevels] = useState([]);
+const [powerLevels, setPowerLevels] = useState([]);
+  const [achievements, setAchievements] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -23,10 +24,11 @@ function TrainingDashboard() {
     const loadData = async () => {
       setLoading(true);
       try {
-        const [userData, workoutData, powerData] = await Promise.all([
+const [userData, workoutData, powerData, achievementData] = await Promise.all([
           userService.getById(1),
           dailyWorkoutService.getAll(),
-          powerLevelService.getAll()
+          powerLevelService.getAll(),
+          achievementService.getAll()
         ]);
         
         setUser(userData || {});
@@ -41,8 +43,8 @@ function TrainingDashboard() {
         } else {
           setTodayWorkout(todaysWorkout);
         }
-        
-        setPowerLevels(powerData || []);
+setPowerLevels(powerData || []);
+        setAchievements(achievementData || []);
       } catch (err) {
         setError(err.message);
         toast.error("Failed to load training data");
@@ -82,14 +84,15 @@ function TrainingDashboard() {
     const allCompleted = ['pushUps', 'sitUps', 'crunches', 'run'].every(
       key => updatedWorkout[key]?.completed
     );
-    updatedWorkout.isComplete = allCompleted;
+updatedWorkout.isComplete = allCompleted;
 
     try {
       const updated = await dailyWorkoutService.update(todayWorkout.id, updatedWorkout);
       setTodayWorkout(updated);
-      
       if (allCompleted && !todayWorkout.isComplete) {
-        toast.success("Training complete! You're one step closer to Super Saiyan!");
+        // Show completion celebration
+        showCompletionCelebration();
+        await checkAchievements();
         await checkLevelUp();
       } else if (updatedWorkout[exerciseKey]?.completed) {
         toast.success(`${exerciseKey} completed! Keep pushing!`);
@@ -98,7 +101,6 @@ function TrainingDashboard() {
       toast.error("Failed to update exercise");
     }
   };
-
   const checkLevelUp = async () => {
     const currentWeekWorkouts = weekWorkouts.filter(w => {
       const workoutDate = new Date(w.date);
@@ -142,6 +144,99 @@ function TrainingDashboard() {
           (workout.crunches?.target || 0) +
           (workout.run?.target || 0);
       }, 0);
+};
+
+  const showCompletionCelebration = () => {
+    // Create confetti effect
+    const confettiContainer = document.createElement('div');
+    confettiContainer.className = 'fixed inset-0 pointer-events-none z-50';
+    
+    for (let i = 0; i < 20; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti-piece';
+      confetti.style.left = `${Math.random() * 100}%`;
+      confetti.style.animationDelay = `${Math.random() * 2}s`;
+      confettiContainer.appendChild(confetti);
+    }
+    
+    document.body.appendChild(confettiContainer);
+    
+    // Show celebration toast
+    toast.success("🔥 Training Complete! Your power level is rising! 🔥", {
+      className: "achievement-toast power-surge-effect"
+    });
+    
+    // Clean up confetti after animation
+    setTimeout(() => {
+      document.body.removeChild(confettiContainer);
+    }, 4000);
+  };
+
+  const checkAchievements = async () => {
+    try {
+      const completedWorkouts = weekWorkouts.filter(w => w.isComplete).length + 1;
+      const currentStreak = user?.currentStreak || 0;
+      
+      // Check for newly unlocked achievements
+      const [streakAchievements, completionAchievements] = await Promise.all([
+        achievementService.checkStreakMilestones(currentStreak + 1, completedWorkouts),
+        achievementService.checkCompletionMilestones(completedWorkouts)
+      ]);
+      
+      const newAchievements = [...streakAchievements, ...completionAchievements];
+      
+      // Show achievement notifications
+      newAchievements.forEach((achievement, index) => {
+        setTimeout(() => {
+          showAchievementNotification(achievement);
+        }, index * 1000);
+      });
+      
+      if (newAchievements.length > 0) {
+        // Update achievements state
+        const updatedAchievements = await achievementService.getAll();
+        setAchievements(updatedAchievements);
+      }
+    } catch (err) {
+      console.error('Failed to check achievements:', err);
+    }
+  };
+
+  const showAchievementNotification = (achievement) => {
+    // Create achievement celebration effect
+    const celebrationContainer = document.createElement('div');
+    celebrationContainer.className = 'fixed inset-0 pointer-events-none z-50';
+    
+    // Add achievement-specific confetti
+    for (let i = 0; i < 15; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti-piece achievement-badge';
+      confetti.style.left = `${Math.random() * 100}%`;
+      confetti.style.backgroundColor = achievement.color;
+      confetti.style.animationDelay = `${Math.random() * 1.5}s`;
+      celebrationContainer.appendChild(confetti);
+    }
+    
+    document.body.appendChild(celebrationContainer);
+    
+    // Show achievement toast with custom styling
+    toast.success(
+      `${achievement.badge} ${achievement.name} Unlocked! ${achievement.description}`,
+      {
+        className: "achievement-toast",
+        style: {
+          background: `linear-gradient(135deg, ${achievement.color}40 0%, ${achievement.color}80 100%)`,
+          borderColor: achievement.color,
+          boxShadow: `0 0 30px ${achievement.color}80`
+        },
+        autoClose: 5000
+      }
+    );
+    
+    // Clean up celebration after animation
+setTimeout(() => {
+      document.body.removeChild(celebrationContainer);
+    }, 3000);
   };
 
   const getCurrentPowerLevel = () => {
@@ -180,10 +275,10 @@ function TrainingDashboard() {
     );
   }
 
-  const currentPowerLevel = getCurrentPowerLevel();
+const currentPowerLevel = getCurrentPowerLevel();
   const progressToNext = getProgressToNext();
   const completedThisWeek = weekWorkouts.filter(w => w.isComplete).length;
-
+  const unlockedAchievements = achievements.filter(a => a.unlocked);
   return (
     <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
       {/* Power Level Display */}
@@ -192,8 +287,8 @@ function TrainingDashboard() {
         currentPowerLevel={currentPowerLevel}
         progressToNext={progressToNext}
         completedThisWeek={completedThisWeek}
+        unlockedAchievements={unlockedAchievements}
       />
-
       {/* Today's Training */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

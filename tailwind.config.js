@@ -105,12 +105,51 @@ export default {
             transform: 'scale(1.02)'
           }
         },
-        'saiyan-glow': {
+'saiyan-glow': {
           '0%, 100%': { 
             boxShadow: '0 0 30px rgba(255, 107, 53, 0.4)'
           },
           '50%': { 
             boxShadow: '0 0 60px rgba(255, 107, 53, 0.8)'
+          }
+        },
+        'confetti-fall': {
+          '0%': { 
+            transform: 'translateY(-100vh) rotate(0deg)',
+            opacity: '1'
+          },
+          '100%': { 
+            transform: 'translateY(100vh) rotate(360deg)',
+            opacity: '0'
+          }
+        },
+        'achievement-glow': {
+          '0%, 100%': { 
+            boxShadow: '0 0 20px rgba(255, 215, 0, 0.4), 0 0 40px rgba(255, 107, 53, 0.2)',
+            transform: 'scale(1)'
+          },
+          '50%': { 
+            boxShadow: '0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 107, 53, 0.4)',
+            transform: 'scale(1.05)'
+          }
+        },
+        'badge-bounce': {
+          '0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0)' },
+          '40%': { transform: 'translateY(-8px)' },
+          '60%': { transform: 'translateY(-4px)' }
+        },
+        'power-surge': {
+          '0%': { 
+            boxShadow: '0 0 10px rgba(255, 107, 53, 0.3)',
+            transform: 'scale(1) rotate(0deg)'
+          },
+          '50%': { 
+            boxShadow: '0 0 50px rgba(255, 215, 0, 0.8), 0 0 100px rgba(255, 107, 53, 0.6)',
+            transform: 'scale(1.1) rotate(180deg)'
+          },
+          '100%': { 
+            boxShadow: '0 0 20px rgba(255, 107, 53, 0.4)',
+            transform: 'scale(1) rotate(360deg)'
           }
         }
       },
@@ -118,8 +157,11 @@ export default {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'power-pulse': 'power-pulse 2s ease-in-out infinite',
-        'saiyan-glow': 'saiyan-glow 1.5s ease-in-out infinite'
-      }
+        'saiyan-glow': 'saiyan-glow 1.5s ease-in-out infinite',
+        'confetti-fall': 'confetti-fall 3s linear infinite',
+        'achievement-glow': 'achievement-glow 2s ease-in-out infinite',
+        'badge-bounce': 'badge-bounce 1s ease-in-out',
+        'power-surge': 'power-surge 1.5s ease-in-out'
     }
   },
   plugins: [require("tailwindcss-animate")],

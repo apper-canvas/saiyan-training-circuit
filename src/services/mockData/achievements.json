@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "name": "First Steps",
+    "description": "Complete your first training session",
+    "type": "completion",
+    "requirement": 1,
+    "badge": "🥇",
+    "color": "#FFD700",
+    "unlocked": false,
+    "unlockedAt": null
+  },
+  {
+    "id": 2,
+    "name": "Dedication",
+    "description": "Maintain a 3-day training streak",
+    "type": "streak",
+    "requirement": 3,
+    "badge": "🔥",
+    "color": "#FF6B35",
+    "unlocked": false,
+    "unlockedAt": null
+  },
+  {
+    "id": 3,
+    "name": "Warrior Spirit",
+    "description": "Maintain a 7-day training streak",
+    "type": "streak",
+    "requirement": 7,
+    "badge": "⚡",
+    "color": "#4169E1",
+    "unlocked": false,
+    "unlockedAt": null
+  },
+  {
+    "id": 4,
+    "name": "Rising Power",
+    "description": "Complete 10 training sessions",
+    "type": "completion",
+    "requirement": 10,
+    "badge": "💪",
+    "color": "#4ECDC4",
+    "unlocked": false,
+    "unlockedAt": null
+  },
+  {
+    "id": 5,
+    "name": "Saiyan Determination",
+    "description": "Maintain a 14-day training streak",
+    "type": "streak",
+    "requirement": 14,
+    "badge": "🌟",
+    "color": "#FFD93D",
+    "unlocked": false,
+    "unlockedAt": null
+  },
+  {
+    "id": 6,
+    "name": "Elite Warrior",
+    "description": "Complete 25 training sessions",
+    "type": "completion",
+    "requirement": 25,
+    "badge": "👑",
+    "color": "#8A2BE2",
+    "unlocked": false,
+    "unlockedAt": null
+  },
+  {
+    "id": 7,
+    "name": "Legendary Streak",
+    "description": "Maintain a 30-day training streak",
+    "type": "streak",
+    "requirement": 30,
+    "badge": "🏆",
+    "color": "#DC143C",
+    "unlocked": false,
+    "unlockedAt": null
+  },
+  {
+    "id": 8,
+    "name": "Super Saiyan",
+    "description": "Complete 50 training sessions",
+    "type": "completion",
+    "requirement": 50,
+    "badge": "💫",
+    "color": "#FFD700",
+    "unlocked": false,
+    "unlockedAt": null
+  },
+  {
+    "id": 9,
+    "name": "Unstoppable Force",
+    "description": "Maintain a 60-day training streak",
+    "type": "streak",
+    "requirement": 60,
+    "badge": "🌠",
+    "color": "#FF6B35",
+    "unlocked": false,
+    "unlockedAt": null
+  },
+  {
+    "id": 10,
+    "name": "Training Master",
+    "description": "Complete 100 training sessions",
+    "type": "completion",
+    "requirement": 100,
+    "badge": "🎖️",
+    "color": "#FFD700",
+    "unlocked": false,
+    "unlockedAt": null
+  }
+]
