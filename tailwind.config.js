@@ -75,11 +75,11 @@ export default {
       },
       boxShadow: {
         'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
-        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
         'neu-light': '5px 5px 15px #d1d9e6, -5px -5px 15px #ffffff',
         'neu-dark': '5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.05)',
         'power': '0 0 30px rgba(255, 215, 0, 0.4), 0 0 60px rgba(255, 215, 0, 0.2)',
-'saiyan': '0 0 50px rgba(255, 107, 53, 0.5), inset 0 0 50px rgba(255, 215, 0, 0.1)'
+        'saiyan': '0 0 50px rgba(255, 107, 53, 0.5), inset 0 0 50px rgba(255, 215, 0, 0.1)'
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -175,16 +175,16 @@ export default {
         'exercise-demo-run': {
           '0%': { transform: 'translateX(-5px) scaleX(1)' },
           '25%': { transform: 'translateX(0px) scaleX(1.05)' },
-          '50%': { transform: 'translateX(5px) scaleX(1)' },
+'50%': { transform: 'translateX(5px) scaleX(1)' },
           '75%': { transform: 'translateX(0px) scaleX(0.95)' },
           '100%': { transform: 'translateX(-5px) scaleX(1)' }
         },
-'mistake-warning': {
+        'mistake-warning': {
           '0%, 100%': { transform: 'rotate(0deg)', backgroundColor: 'rgba(239, 68, 68, 0.1)' },
           '75%': { transform: 'rotate(-1deg)', backgroundColor: 'rgba(239, 68, 68, 0.2)' }
         },
         'timer-pulse': {
-          '0%, 100%': { 
+          '0%, 100%': {
             boxShadow: '0 0 20px rgba(255, 215, 0, 0.3)',
             transform: 'scale(1)'
           },
@@ -209,11 +209,11 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'power-pulse': 'power-pulse 2s ease-in-out infinite',
         'saiyan-glow': 'saiyan-glow 1.5s ease-in-out infinite',
-        'confetti-fall': 'confetti-fall 3s linear infinite',
+'confetti-fall': 'confetti-fall 3s linear infinite',
         'achievement-glow': 'achievement-glow 2s ease-in-out infinite',
         'badge-bounce': 'badge-bounce 1s ease-in-out',
         'power-surge': 'power-surge 1.5s ease-in-out',
-'exercise-demo-pushup': 'exercise-demo-pushup 2s ease-in-out infinite',
+        'exercise-demo-pushup': 'exercise-demo-pushup 2s ease-in-out infinite',
         'exercise-demo-situp': 'exercise-demo-situp 2.5s ease-in-out infinite',
         'exercise-demo-crunch': 'exercise-demo-crunch 1.8s ease-in-out infinite',
         'exercise-demo-run': 'exercise-demo-run 1.5s ease-in-out infinite',
