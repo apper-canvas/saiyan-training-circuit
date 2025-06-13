@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import react-toastify styles before custom utilities to ensure proper cascade */
+@import 'react-toastify/dist/ReactToastify.css';
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -117,9 +120,6 @@
     animation: power-surge 1.5s ease-in-out;
   }
 }
-/* Import react-toastify styles before custom utilities to ensure proper cascade */
-/* This prevents PostCSS parsing errors and maintains proper CSS specificity */
-@import 'react-toastify/dist/ReactToastify.css';
 
 @layer utilities {
   /* Custom toast overrides - applied after react-toastify base styles */
