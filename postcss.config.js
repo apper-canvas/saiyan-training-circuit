@@ -9,6 +9,12 @@ export default {
         'custom-media-queries': true
       }
     },
+    'tailwindcss': {},
+    'autoprefixer': {}
+  }
+}
+      }
+    },
     tailwindcss: {},
     autoprefixer: {}
   }
