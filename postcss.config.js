@@ -13,9 +13,3 @@ export default {
     'autoprefixer': {}
   }
 }
-      }
-    },
-    tailwindcss: {},
-    autoprefixer: {}
-  }
-}
