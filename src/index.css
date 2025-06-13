@@ -36,8 +36,8 @@
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
---card-foreground: 0 0% 98%;
+--card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
@@ -112,9 +112,9 @@
     animation-delay: 1s;
   }
 
-  .achievement-badge {
+.achievement-badge {
     animation: badge-bounce 1s ease-in-out;
-}
+  }
 
   .power-surge-effect {
     animation: power-surge 1.5s ease-in-out;
