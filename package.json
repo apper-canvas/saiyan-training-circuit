@@ -61,7 +61,7 @@
     "postcss": "^8.4.29",
     "autoprefixer": "^10.4.15",
     "framer-motion": "^10.16.4",
-    "react-toastify": "^11.0.5",
+"react-toastify": "^10.0.5",
     "apexcharts": "^4.7.0",
     "react-apexcharts": "^1.7.0",
     "react-redux": "^9.2.0",
