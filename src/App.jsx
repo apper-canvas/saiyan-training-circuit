@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import HomePage from './components/pages/HomePage'
 import NotFoundPage from './components/pages/NotFoundPage'
-import NotFoundPage from './components/pages/NotFoundPage'
 
 function App() {
   return (
