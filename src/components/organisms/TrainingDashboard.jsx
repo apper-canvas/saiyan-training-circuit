@@ -73,36 +73,39 @@ const createTodayWorkout = async (weekNumber) => {
 const toggleExercise = async (exerciseKey) => {
     if (!todayWorkout?.Id) return;
 
-    // Map exercise keys to database field names
-    const fieldMapping = {
-      pushUps: 'push_ups',
-      sitUps: 'sit_ups', 
-      crunches: 'crunches',
-      run: 'run'
-    };
-
-    const dbFieldName = fieldMapping[exerciseKey];
-    const currentCompleted = todayWorkout[`${dbFieldName}_completed`] || false;
+    // Track completion state locally since database only has is_complete field
+    const completedExercises = todayWorkout.completedExercises || [];
+    const isCurrentlyCompleted = completedExercises.includes(exerciseKey);
+    
+    let updatedCompletedExercises;
+    if (isCurrentlyCompleted) {
+      // Remove from completed list
+      updatedCompletedExercises = completedExercises.filter(ex => ex !== exerciseKey);
+    } else {
+      // Add to completed list
+      updatedCompletedExercises = [...completedExercises, exerciseKey];
+    }
+    
+    // Check if all exercises are now completed
+    const allExercises = ['pushUps', 'sitUps', 'crunches', 'run'];
+    const allCompleted = allExercises.every(ex => updatedCompletedExercises.includes(ex));
     
     const updatedWorkout = {
       ...todayWorkout,
-      [`${dbFieldName}_completed`]: !currentCompleted
+      completedExercises: updatedCompletedExercises,
+      is_complete: allCompleted
     };
-
-    const allCompleted = ['push_ups', 'sit_ups', 'crunches', 'run'].every(
-      key => updatedWorkout[`${key}_completed`]
-    );
-    updatedWorkout.is_complete = allCompleted;
 
     try {
       const updated = await dailyWorkoutService.update(todayWorkout.Id, updatedWorkout);
       setTodayWorkout(updated);
+      
       if (allCompleted && !todayWorkout.is_complete) {
         // Show completion celebration
         showCompletionCelebration();
         await checkAchievements();
         await checkLevelUp();
-      } else if (updatedWorkout[`${dbFieldName}_completed`]) {
+      } else if (!isCurrentlyCompleted) {
         toast.success(`${exerciseKey} completed! Keep pushing!`);
       }
     } catch (err) {
@@ -316,28 +319,28 @@ const currentPowerLevel = getCurrentPowerLevel();
               exerciseKey="pushUps"
               name="Push-ups"
               target={parseInt(todayWorkout?.push_ups) || 0}
-              completed={todayWorkout?.push_ups_completed || false}
+              completed={todayWorkout?.completedExercises?.includes('pushUps') || false}
               onToggle={toggleExercise}
             />
             <TrainingExerciseCard
               exerciseKey="sitUps"
               name="Sit-ups"
               target={parseInt(todayWorkout?.sit_ups) || 0}
-              completed={todayWorkout?.sit_ups_completed || false}
+              completed={todayWorkout?.completedExercises?.includes('sitUps') || false}
               onToggle={toggleExercise}
             />
             <TrainingExerciseCard
               exerciseKey="crunches"
               name="Crunches"
               target={parseInt(todayWorkout?.crunches) || 0}
-              completed={todayWorkout?.crunches_completed || false}
+              completed={todayWorkout?.completedExercises?.includes('crunches') || false}
               onToggle={toggleExercise}
             />
             <TrainingExerciseCard
               exerciseKey="run"
               name="Running"
               target={parseInt(todayWorkout?.run) || 0}
-              completed={todayWorkout?.run_completed || false}
+              completed={todayWorkout?.completedExercises?.includes('run') || false}
               onToggle={toggleExercise}
             />
           </div>
