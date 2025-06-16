@@ -1,4 +1,6 @@
-import { toast } from 'sonner';
+import { toast } from 'react-toastify';
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const userService = {
   async getAll() {
@@ -8,7 +10,6 @@ const userService = {
         apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
         apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
       });
-
       const params = {
         Fields: ['Name', 'week_number', 'current_level', 'current_rank', 'total_reps_completed', 'current_streak']
       };
@@ -29,7 +30,7 @@ const userService = {
     }
   },
 
-  async getById(id) {
+async getById(id) {
     try {
       const { ApperClient } = window.ApperSDK;
       const apperClient = new ApperClient({
@@ -43,13 +44,12 @@ const userService = {
 
       const response = await apperClient.getRecordById('User1', id, params);
       
-      if (!response.success) {
-        console.error(response.message);
-        toast.error(response.message);
+      // ApperClient.getRecordById returns data directly or throws an error
+      if (!response || !response.data) {
         return null;
       }
 
-      return response.data || null;
+      return response.data;
     } catch (error) {
       console.error(`Error fetching user with ID ${id}:`, error);
       toast.error("Failed to load user");
