@@ -85,14 +85,13 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
-        'xl': '0.75rem',
+'xl': '0.75rem',
         '2xl': '1rem'
-      }
-    },
-    keyframes: {
-      'accordion-down': {
-        from: { height: '0' },
-        to: { height: 'var(--radix-accordion-content-height)' }
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' }
         },
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
@@ -175,7 +174,7 @@ export default {
         'exercise-demo-run': {
           '0%': { transform: 'translateX(-5px) scaleX(1)' },
           '25%': { transform: 'translateX(0px) scaleX(1.05)' },
-'50%': { transform: 'translateX(5px) scaleX(1)' },
+          '50%': { transform: 'translateX(5px) scaleX(1)' },
           '75%': { transform: 'translateX(0px) scaleX(0.95)' },
           '100%': { transform: 'translateX(-5px) scaleX(1)' }
         },
@@ -209,7 +208,7 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'power-pulse': 'power-pulse 2s ease-in-out infinite',
         'saiyan-glow': 'saiyan-glow 1.5s ease-in-out infinite',
-'confetti-fall': 'confetti-fall 3s linear infinite',
+        'confetti-fall': 'confetti-fall 3s linear infinite',
         'achievement-glow': 'achievement-glow 2s ease-in-out infinite',
         'badge-bounce': 'badge-bounce 1s ease-in-out',
         'power-surge': 'power-surge 1.5s ease-in-out',
