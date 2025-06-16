@@ -17,14 +17,14 @@ function PowerLevelDisplay({ user, currentPowerLevel, progressToNext, completedT
           <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
             <div className="text-center sm:text-left">
               <CardTitle className="text-2xl sm:text-3xl font-bold text-saiyan-gold mb-2">
-                {currentPowerLevel?.rank || "Training Warrior"}
+{currentPowerLevel?.rank || "Training Warrior"}
               </CardTitle>
               <div className="flex items-center space-x-4 text-sm sm:text-base text-gray-300">
-                <span>Level {user?.currentLevel || 1}</span>
+                <span>Level {user?.current_level || 1}</span>
                 <span>•</span>
-                <span>Week {user?.weekNumber || 1}</span>
+                <span>Week {user?.week_number || 1}</span>
                 <span>•</span>
-                <span>Power: {currentPowerLevel?.powerValue || 100}</span>
+                <span>Power: {currentPowerLevel?.power_value || 100}</span>
               </div>
             </div>
             <Badge 
@@ -37,8 +37,8 @@ function PowerLevelDisplay({ user, currentPowerLevel, progressToNext, completedT
         </CardHeader>
         <CardContent className="relative">
           <div className="space-y-3">
-            <div className="flex justify-between text-sm text-gray-400">
-              <span>Progress to {currentPowerLevel?.nextRank || "Next Level"}</span>
+<div className="flex justify-between text-sm text-gray-400">
+              <span>Progress to {currentPowerLevel?.next_rank || "Next Level"}</span>
               <span>{Math.round(progressToNext)}%</span>
             </div>
             <ProgressBar 

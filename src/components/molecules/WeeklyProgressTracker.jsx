@@ -33,15 +33,15 @@ function WeeklyProgressTracker({ weekWorkouts = [] }) {
         day: 'numeric'
       });
 
-      dataPoints.push({
+dataPoints.push({
         date: dateStr,
         day: dayName,
-        pushUps: workout?.pushUps?.completed ? workout.pushUps.target : 0,
-        sitUps: workout?.sitUps?.completed ? workout.sitUps.target : 0,
-        crunches: workout?.crunches?.completed ? workout.crunches.target : 0,
-        running: workout?.run?.completed ? workout.run.target : 0,
-        totalReps: workout?.pushUps?.completed && workout?.sitUps?.completed && workout?.crunches?.completed
-          ? (workout.pushUps.target + workout.sitUps.target + workout.crunches.target)
+        pushUps: workout?.push_ups_completed ? parseInt(workout.push_ups) : 0,
+        sitUps: workout?.sit_ups_completed ? parseInt(workout.sit_ups) : 0,
+        crunches: workout?.crunches_completed ? parseInt(workout.crunches) : 0,
+        running: workout?.run_completed ? parseInt(workout.run) : 0,
+        totalReps: workout?.push_ups_completed && workout?.sit_ups_completed && workout?.crunches_completed
+          ? (parseInt(workout.push_ups) + parseInt(workout.sit_ups) + parseInt(workout.crunches))
           : 0
       });
     }

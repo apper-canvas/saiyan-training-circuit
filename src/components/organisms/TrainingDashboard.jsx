@@ -10,10 +10,10 @@ import WeeklyProgressTracker from '@/components/molecules/WeeklyProgressTracker'
 import { userService, dailyWorkoutService, powerLevelService, achievementService } from '@/services';
 
 function TrainingDashboard() {
-  const [user, setUser] = useState({});
+const [user, setUser] = useState({});
   const [todayWorkout, setTodayWorkout] = useState({});
   const [weekWorkouts, setWeekWorkouts] = useState([]);
-const [powerLevels, setPowerLevels] = useState([]);
+  const [powerLevels, setPowerLevels] = useState([]);
   const [achievements, setAchievements] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -55,73 +55,81 @@ setPowerLevels(powerData || []);
     loadData();
   }, [today]);
 
-  const createTodayWorkout = async (weekNumber) => {
+const createTodayWorkout = async (weekNumber) => {
     const baseReps = 10 + ((weekNumber - 1) * 10);
     const newWorkout = {
       date: today,
-      pushUps: { target: baseReps, completed: false },
-      sitUps: { target: baseReps, completed: false },
-      crunches: { target: baseReps, completed: false },
-      run: { target: Math.max(1, weekNumber), completed: false },
-      isComplete: false
+      push_ups: baseReps.toString(),
+      sit_ups: baseReps.toString(),
+      crunches: baseReps.toString(),
+      run: Math.max(1, weekNumber).toString(),
+      is_complete: false
     };
     
     const created = await dailyWorkoutService.create(newWorkout);
     return created;
   };
 
-  const toggleExercise = async (exerciseKey) => {
-    if (!todayWorkout?.id) return;
+const toggleExercise = async (exerciseKey) => {
+    if (!todayWorkout?.Id) return;
 
-    const updatedWorkout = {
-      ...todayWorkout,
-      [exerciseKey]: {
-        ...todayWorkout[exerciseKey],
-        completed: !todayWorkout[exerciseKey]?.completed
-      }
+    // Map exercise keys to database field names
+    const fieldMapping = {
+      pushUps: 'push_ups',
+      sitUps: 'sit_ups', 
+      crunches: 'crunches',
+      run: 'run'
     };
 
-    const allCompleted = ['pushUps', 'sitUps', 'crunches', 'run'].every(
-      key => updatedWorkout[key]?.completed
+    const dbFieldName = fieldMapping[exerciseKey];
+    const currentCompleted = todayWorkout[`${dbFieldName}_completed`] || false;
+    
+    const updatedWorkout = {
+      ...todayWorkout,
+      [`${dbFieldName}_completed`]: !currentCompleted
+    };
+
+    const allCompleted = ['push_ups', 'sit_ups', 'crunches', 'run'].every(
+      key => updatedWorkout[`${key}_completed`]
     );
-updatedWorkout.isComplete = allCompleted;
+    updatedWorkout.is_complete = allCompleted;
 
     try {
-      const updated = await dailyWorkoutService.update(todayWorkout.id, updatedWorkout);
+      const updated = await dailyWorkoutService.update(todayWorkout.Id, updatedWorkout);
       setTodayWorkout(updated);
-      if (allCompleted && !todayWorkout.isComplete) {
+      if (allCompleted && !todayWorkout.is_complete) {
         // Show completion celebration
         showCompletionCelebration();
         await checkAchievements();
         await checkLevelUp();
-      } else if (updatedWorkout[exerciseKey]?.completed) {
+      } else if (updatedWorkout[`${dbFieldName}_completed`]) {
         toast.success(`${exerciseKey} completed! Keep pushing!`);
       }
     } catch (err) {
       toast.error("Failed to update exercise");
     }
   };
-  const checkLevelUp = async () => {
+const checkLevelUp = async () => {
     const currentWeekWorkouts = weekWorkouts.filter(w => {
       const workoutDate = new Date(w.date);
       const startOfWeek = new Date();
       startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay());
-      return workoutDate >= startOfWeek && w.isComplete;
+      return workoutDate >= startOfWeek && w.is_complete;
     });
 
     if (currentWeekWorkouts.length === 7) {
-      const newWeekNumber = (user?.weekNumber || 1) + 1;
+      const newWeekNumber = (user?.week_number || 1) + 1;
       const currentPowerLevel = powerLevels.find(p => 
-        newWeekNumber >= p.minWeek && (!p.nextRank || newWeekNumber < powerLevels.find(next => next.rank === p.nextRank)?.minWeek)
+        newWeekNumber >= p.min_week && (!p.next_rank || newWeekNumber < powerLevels.find(next => next.rank === p.next_rank)?.min_week)
       );
 
       const updatedUser = {
         ...user,
-        weekNumber: newWeekNumber,
-        currentLevel: (user?.currentLevel || 1) + 1,
-        currentRank: currentPowerLevel?.rank || user?.currentRank || "Human",
-        totalRepsCompleted: (user?.totalRepsCompleted || 0) + getTotalRepsThisWeek(),
-        currentStreak: (user?.currentStreak || 0) + 1
+        week_number: newWeekNumber,
+        current_level: (user?.current_level || 1) + 1,
+        current_rank: currentPowerLevel?.rank || user?.current_rank || "Human",
+        total_reps_completed: (user?.total_reps_completed || 0) + getTotalRepsThisWeek(),
+        current_streak: (user?.current_streak || 0) + 1
       };
 
       try {
@@ -134,17 +142,17 @@ updatedWorkout.isComplete = allCompleted;
     }
   };
 
-  const getTotalRepsThisWeek = () => {
+const getTotalRepsThisWeek = () => {
     return weekWorkouts
-      .filter(w => w.isComplete)
+      .filter(w => w.is_complete)
       .reduce((total, workout) => {
         return total + 
-          (workout.pushUps?.target || 0) +
-          (workout.sitUps?.target || 0) +
-          (workout.crunches?.target || 0) +
-          (workout.run?.target || 0);
+          (parseInt(workout.push_ups) || 0) +
+          (parseInt(workout.sit_ups) || 0) +
+          (parseInt(workout.crunches) || 0) +
+          (parseInt(workout.run) || 0);
       }, 0);
-};
+  };
 
   const showCompletionCelebration = () => {
     // Create confetti effect
@@ -172,10 +180,10 @@ updatedWorkout.isComplete = allCompleted;
     }, 4000);
   };
 
-  const checkAchievements = async () => {
+const checkAchievements = async () => {
     try {
-      const completedWorkouts = weekWorkouts.filter(w => w.isComplete).length + 1;
-      const currentStreak = user?.currentStreak || 0;
+      const completedWorkouts = weekWorkouts.filter(w => w.is_complete).length + 1;
+      const currentStreak = user?.current_streak || 0;
       
       // Check for newly unlocked achievements
       const [streakAchievements, completionAchievements] = await Promise.all([
@@ -239,21 +247,21 @@ setTimeout(() => {
     }, 3000);
   };
 
-  const getCurrentPowerLevel = () => {
-    const currentWeek = user?.weekNumber || 1;
+const getCurrentPowerLevel = () => {
+    const currentWeek = user?.week_number || 1;
     return powerLevels.find(p => 
-      currentWeek >= p.minWeek && (!p.nextRank || currentWeek < powerLevels.find(next => next.rank === p.nextRank)?.minWeek)
+      currentWeek >= p.min_week && (!p.next_rank || currentWeek < powerLevels.find(next => next.rank === p.next_rank)?.min_week)
     ) || powerLevels[0] || {};
   };
 
-  const getProgressToNext = () => {
+const getProgressToNext = () => {
     const currentLevel = getCurrentPowerLevel();
-    const nextLevel = powerLevels.find(p => p.rank === currentLevel?.nextRank);
+    const nextLevel = powerLevels.find(p => p.rank === currentLevel?.next_rank);
     if (!nextLevel) return 100;
 
-    const current = user?.weekNumber || 1;
-    const start = currentLevel?.minWeek || 1;
-    const end = nextLevel?.minWeek || start + 1;
+    const current = user?.week_number || 1;
+    const start = currentLevel?.min_week || 1;
+    const end = nextLevel?.min_week || start + 1;
     
     return Math.min(100, ((current - start) / (end - start)) * 100);
   };
@@ -277,7 +285,7 @@ setTimeout(() => {
 
 const currentPowerLevel = getCurrentPowerLevel();
   const progressToNext = getProgressToNext();
-  const completedThisWeek = weekWorkouts.filter(w => w.isComplete).length;
+  const completedThisWeek = weekWorkouts.filter(w => w.is_complete).length;
   const unlockedAchievements = achievements.filter(a => a.unlocked);
   return (
     <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
@@ -304,39 +312,39 @@ const currentPowerLevel = getCurrentPowerLevel();
             Complete all exercises to advance your power level
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            <TrainingExerciseCard
+<TrainingExerciseCard
               exerciseKey="pushUps"
               name="Push-ups"
-              target={todayWorkout?.pushUps?.target || 0}
-              completed={todayWorkout?.pushUps?.completed || false}
+              target={parseInt(todayWorkout?.push_ups) || 0}
+              completed={todayWorkout?.push_ups_completed || false}
               onToggle={toggleExercise}
             />
             <TrainingExerciseCard
               exerciseKey="sitUps"
               name="Sit-ups"
-              target={todayWorkout?.sitUps?.target || 0}
-              completed={todayWorkout?.sitUps?.completed || false}
+              target={parseInt(todayWorkout?.sit_ups) || 0}
+              completed={todayWorkout?.sit_ups_completed || false}
               onToggle={toggleExercise}
             />
             <TrainingExerciseCard
               exerciseKey="crunches"
               name="Crunches"
-              target={todayWorkout?.crunches?.target || 0}
-              completed={todayWorkout?.crunches?.completed || false}
+              target={parseInt(todayWorkout?.crunches) || 0}
+              completed={todayWorkout?.crunches_completed || false}
               onToggle={toggleExercise}
             />
             <TrainingExerciseCard
               exerciseKey="run"
               name="Running"
-              target={todayWorkout?.run?.target || 0}
-              completed={todayWorkout?.run?.completed || false}
+              target={parseInt(todayWorkout?.run) || 0}
+              completed={todayWorkout?.run_completed || false}
               onToggle={toggleExercise}
             />
           </div>
 
           {/* Completion Status */}
-          <AnimatePresence>
-            {todayWorkout?.isComplete && (
+<AnimatePresence>
+            {todayWorkout?.is_complete && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
